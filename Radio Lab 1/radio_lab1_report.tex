@@ -1,0 +1,209 @@
+%\documentclass{article}
+%\documentclass[preprint2]{aastex63}
+%\usepackage{graphicx} % Required for inserting images
+
+
+\documentclass[linenumbers,twocolumn]{aastex631}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\setcitestyle{round}
+\usepackage{amsmath,amssymb}
+\usepackage{afterpage}
+\usepackage{xcolor}
+\usepackage[caption=false]{subfig}
+\usepackage{soul}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+\newcommand{\hi}{{\rm H\,{\small I}}}
+\newcommand{\kms}{\ensuremath{{\rm km~s^{-1}}}}
+\newcommand{\persc}{\ensuremath{{\rm cm^{-2}}}}
+\newcommand{\msun}{\ensuremath{M_{\odot}}}
+
+
+
+\begin{document}
+
+\title{Astron 465 Radio Lab 1: Measuring the Telescope Beamwidth with the Sun}
+
+
+
+\author[0000-0002-3418-7817]{Riya Kore}
+\affiliation{University of Wisconsin--Madison, Department of Astronomy, 475 N Charter St, Madison, WI 53703, USA}
+
+\section{Introduction}
+Radio telescopes are critical instruments in astronomy, designed to observe and analyze the electromagnetic radiation emitted by celestial sources. These telescopes detect electromagnetic waves and are influenced by several factors, including the antenna's effective size, shape (like a circular paraboloid), and the efficiency of signal collection and processing. The performance of a radio telescope is primarily described by its beam pattern, which defines how the telescope responds to radiation as a function of direction. This beam pattern, also known as the antenna pattern, is essential in determining the telescope’s resolution and sensitivity to various sources. The response remains consistent whether the telescope is used for transmitting or detecting radio waves and can be represented in polar coordinates $(\theta , \phi)$ where $\theta$ is the angular distance from the telescope’s pointing direction and $\phi$ is the azimuthal angle. The normalized beam pattern, denoted as $P_{n}(\theta, \phi)$, is typically defined to have a value of unity at the beam center, $(\theta, \phi) = (0,0)$. \\
+For radio telescopes with perfect circular symmetry, the beam pattern is independent of the azimuthal angle \(\phi\) and can be characterized solely by the angular coordinate \(\theta\). A critical parameter used to describe this pattern is the Full Width at Half Maximum (FWHM). The FWHM is defined as twice the angle \(\theta_{1/2}\) at which the power falls to 50\% of its peak value, represented mathematically as:
+\[
+P_n(\theta_{1/2}, \phi) = 0.5
+\]
+The FWHM provides a quantitative measure of the telescope’s resolving power, indicating the smallest angular separation between two sources that the telescope can distinguish as separate entities.
+
+The theoretical beam pattern for a uniformly illuminated circular aperture, such as the one used in this experiment, can be described by the following equation:
+\begin{equation}
+    P(\theta) = \left( \frac{2J_1(x)}{x} \right)^2
+\end{equation}
+where \( J_1(x) \) is the first-order Bessel function, and \( x \) is defined as:
+\[
+x = \frac{\pi \sin{\theta}}{(\lambda / D)}
+\]
+Here, \( D \) is the diameter of the antenna, \( \lambda \) is the wavelength of observation, and \( \theta \) is the angular offset from the center of the beam. This equation predicts the intensity distribution of the beam pattern as a function of angle. For a circular aperture, the FWHM can be approximated using the formula:
+\[
+\text{FWHM} = \frac{1.02 \lambda}{D} \text{ radians}
+\]
+In this experiment, we aim to measure the FWHM of a Small Radio Telescope (SRT) using the Sun as a bright radio source. The FWHM provides a measure of the telescope’s angular resolution and serves as a benchmark for evaluating its performance. The power received by the telescope at any given point on the beam pattern depends on the effective area of the dish, \( A_e \), and the specific intensity of the source, \( I_{\nu}(\theta, \phi) \), as expressed by the equation:
+\[
+P_{\text{rec}} = \frac{1}{2} A_e I_{\nu}(\theta, \phi) P_n(\theta, \phi)
+\]
+For an extended source, the total power received per unit frequency is given by the integral of the normalized beam pattern, the specific intensity, and the solid angle \( \Omega \):
+\[
+P_{\text{rec}}(\nu) = \frac{A_e}{2} \int \int P_n(\theta, \phi) I_{\nu}(\theta, \phi) d\Omega
+\]
+Using the Sun as the primary radio source provides a strong and stable signal, making it ideal for measuring the FWHM. During the experiment, the SRT was moved in small angular steps across the Sun’s position, and the power received at each position was recorded. This process allows for the mapping of the telescope’s beam pattern, from which the FWHM can be determined and compared with the theoretical value calculated using the above formula. Such comparisons are essential for assessing the accuracy of the telescope’s performance and identifying any deviations caused by instrumental or observational limitations. Through this lab, we aim to calibrate the telescope and gain insights into the factors that affect the quality and precision of its measurements, ensuring reliable astronomical observations.
+
+\section{Observations} \label{sec:observations}
+
+In this experiment, we utilized the UW-Madison's Small Radio Telescope (SRT) to observe the Sun, a bright and stable radio source. Our objective was to measure the Full Width at Half Maximum (FWHM) of the telescope’s beam by scanning it across the Sun’s position and recording the intensity at various offset angles. The observational setup and procedure are described in detail below.
+
+\subsection{Observational Setup}
+
+The UW-Madison Small Radio Telescope (SRT) used in this experiment is equipped with a parabolic reflector dish and a feed horn receiver operating at a central frequency of 1420.4 MHz, corresponding to the hydrogen line. The initial telescope position was set to an azimuth (Az) of 50 degrees and an elevation (El) of 50 degrees.
+
+To record the Sun’s signal across different positions, the telescope was programmed to perform a scan along the azimuthal axis. The scan ranged from \(-24\) to \(+24\) degrees in steps of 3 degrees. At each offset, the telescope held its position for 10 seconds to capture the brightness temperature in Kelvin. This systematic scanning method allowed us to gather data across a wide range of angular offsets, enabling accurate measurements of the Sun’s signal intensity as it moved through the telescope’s beam.
+
+\subsection{Observing Script}
+
+A pre-written script was used to automate the telescope’s movements and data acquisition, ensuring consistency and reducing potential errors. The script specified the central frequency, source (the Sun), and a sequence of azimuthal offsets to be applied. For each offset, the script commanded the telescope to hold its position for 10 seconds before moving to the next offset. Upon completion, the telescope returned to its original position.
+The script included commands to define initial setup parameters and control telescope movement using the ": offset" and "roff" commands, simplifying the overall observing procedure and ensuring uniform data collection throughout the observation.
+
+\subsection{Data Acquisition}
+
+The observational procedure was carried out on a clear day to minimize the impact of atmospheric interference. The SRT was positioned at the initial azimuth and elevation values, and the script was executed to begin the scan. The telescope moved in small steps along the azimuthal axis, taking measurements at each position as instructed by the pre-written script. This method ensured that we could track the Sun’s signal as it crossed the telescope’s beam, providing a comprehensive dataset for analyzing the beam pattern.
+
+Each observation yielded a spectrum of intensity values across 64 frequency channels. shows the recorded spectra for four different azimuthal offsets: \(-24\), \(0\), \(3\), and \(6\) degrees. The brightness temperature in Kelvin was plotted against the bin number for each offset, revealing how the Sun’s signal intensity changes as the telescope beam moves across it.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{lab1_offset_-24.png}
+    \caption{Recorded spectrum at an azimuthal offset of -24 degrees.}
+    \label{fig:offset_-24}
+\end{figure}
+    
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{lab1_offset_0.png}
+    \caption{Recorded spectrum at an azimuthal offset of 0 degrees.}
+    \label{fig:offset_0}
+\end{figure}
+    
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{lab1_offset_3.png}
+    \caption{Recorded spectrum at an azimuthal offset of 3 degrees.}
+    \label{fig:offset_3}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{lab1_offset_6.png}
+    \caption{Recorded spectrum at an azimuthal offset of 6 degrees.}
+    \label{fig:offset_6}
+\end{figure}
+
+\subsection{Observational Challenges}
+
+During the observations, some challenges were encountered. Atmospheric conditions can introduce noise and fluctuation in the intensity values. To mitigate this, the integration time was set to 10 seconds at each position, which allowed for averaging over multiple measurements to reduce random noise. Additionally, the SRT on top of Sterling was having some alignment issues so we had to use the SRT at Pine Bluff.
+
+Overall, the observational setup and the use of the pre-written script provided a comprehensive dataset for analyzing the SRT’s beam pattern, enabling us to estimate the FWHM accurately and compare it with theoretical predictions.
+
+\section{Data analysis} 
+\label{sec:results}
+
+The goal of this analysis is to calculate the Full Width at Half Maximum (FWHM) of the beam pattern using observations from the Sun across various azimuthal offsets. The data for this analysis was extracted from SRT data files, which were processed using Python scripts to compute the integrated intensity of radio emission for each observed position.
+
+\subsection{Data Extraction and Preparation}
+The raw data files were provided in a \texttt{.rad} format, containing information on azimuth and elevation settings, spectral data, and other parameters for the radio telescope observations. Using Python, we read the file to extract the angular offsets corresponding to the telescope’s positions. The brightness temperature values from each scan were averaged for each offset position. These values were stored in separate arrays for further analysis.
+
+\subsection{Integrated Intensity Calculation}
+For each measurement (spectrum) at each offset position, the integrated intensity of the continuum spectrum was calculated by summing the brightness temperatures across all frequency bins. Since multiple measurements were taken at each offset, the average integrated intensity and its standard deviation were computed.
+
+These values were then used to plot the mean intensity and uncertainty against the azimuthal offsets for subsequent analysis.
+
+\subsection{Plotting and Error Analysis}
+The integrated intensity values were plotted against the azimuthal offsets, and error bars were included to represent the standard deviation at each position. Figure 5 shows the average integrated intensity for different azimuthal offsets, with the error bars indicating uncertainty in the measurements.
+
+The azimuthal offset was corrected using the formula:
+
+\begin{equation}
+    \text{Offset}_{\text{corrected}} = \text{Offset} \times \cos(\text{Elevation})
+\end{equation}
+
+This correction accounts for the fact that each degree change in azimuth is only \(1 \times \cos(\text{Elevation})\) degrees on the sky.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\linewidth]{avg_int_w_errorbars.png}
+    \caption{Gaussian distribution of actual intensity values collected for the Sun across different angular offsets.}
+    \label{fig:gaussian_distribution}
+\end{figure}
+
+\subsection{Calculating the Full Width at Half Maximum (FWHM)}
+To estimate the Full Width at Half Maximum (FWHM), the mean intensity values were used to determine the angular offset range over which the beam pattern intensity drops to half of its peak value. We defined the FWHM as twice the angular offset value at which the normalized power pattern drops to half its maximum:
+\begin{equation}
+    \text{FWHM} = 2 \times \theta_{1/2}
+\end{equation}
+where \( \theta_{1/2} \) is the angular offset at which the power pattern drops to 0.5 of its maximum. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\linewidth]{actual_fwhm_plotted.png}
+    \caption{Mean intensity vs. offset for the Sun with FWHM (Full Width at Half Maximum) highlighted.}
+    \label{fig:mean_int_w_beam_width}
+\end{figure}
+The calculated FWHM for this dataset is approximately 6.57 degrees, as shown in Figure 6. This was obtained using both visual inspection of the plot and numerical interpolation to identify the points where the beam intensity dropped to half its maximum value.
+
+\subsection{Comparison with Theoretical Beam Pattern}
+To validate our results, we compared the observed beam pattern with the theoretical beam pattern expected for a uniformly illuminated circular aperture with the width of the SRT antenna dish. The theoretical beam pattern is defined in equation (1), was used to compute the theoretical beam pattern. This is shown in Figure 7.
+
+We scaled and adjusted the theoretical beam pattern to match the observed data by aligning the peak values and ensuring the asymptotic behavior of the theoretical curve matched the observed profile at large offsets. Figure 8 shows a comparison between the actual normalized beam pattern (red curve) and the theoretical beam pattern (blue curve).
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\linewidth]{theoretical_curve.png}
+    \caption{Theoretical beam pattern expected for a uniformly illuminated circular aperture, computed using the Bessel function.}
+    \label{fig:theoretical_bessel_func}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\linewidth]{theoretical_vs_actual.png}
+    \caption{Comparison between the actual normalized beam pattern and the theoretical normalized beam pattern with the FWHM marked.}
+    \label{fig:theoretical_vs_actual}
+\end{figure}
+
+\subsection{Observations and Inferences}
+The observed FWHM was approximately 6.5717 degrees, while the theoretical beam width was 5.2976 degrees. The difference between the observed and theoretical patterns may also indicate a slight misalignment or pointing error in the telescope.
+
+Overall, the results show a good agreement between the observed and theoretical beam patterns. This analysis demonstrates the capability of the SRT telescope in characterizing the beam width and highlights the importance of careful data collection and analysis for accurate measurements.
+
+\section{Conclusions}
+
+The analysis conducted in this experiment aimed to measure and compare the beam pattern of the SRT telescope with the theoretical expectations for a uniformly illuminated circular aperture. We collected spectra of the Sun at various azimuthal offsets and computed the Full Width at Half Maximum (FWHM) of the resulting beam pattern. The experimentally measured FWHM was approximately 6.5717 degrees, whereas the theoretically expected value was 5.2976 degrees. This discrepancy between the observed and theoretical values is likely due to the inherent limitations of the telescope's pointing accuracy.
+
+A primary challenge faced during the experiment was the precision in determining the exact center of the Sun, as the telescope did not point directly at (0,0). This pointing offset may have led to slight inaccuracies in the observed beam pattern. Consequently, the fitted beam pattern, as seen in Figure~\ref{fig:mean_int_w_beam_width} (dashed red curve), required adjustments using a cubic spline function to smooth out the data and calculate the FWHM.
+
+The experiment also revealed the impact of telescope alignment and calibration on measurement accuracy. The slight shifts in the beam center could indicate a potential need for recalibration of the telescope's azimuth and elevation mechanisms. Addressing these issues would allow for more accurate alignment and, in turn, more precise measurements.
+
+To improve future experiments, the following enhancements are recommended:
+
+\begin{itemize}
+    \item Increase data resolution by using smaller intervals (e.g., 1-degree steps) to capture a more detailed beam pattern.
+    \item Perform repeated scans at each offset to minimize random errors and obtain a reliable average intensity.
+    \item Regularly calibrate the telescope's azimuth and elevation settings for precise positioning.
+\end{itemize}
+
+Overall, the experiment provided valuable insights into the behavior of the SRT telescope's beam pattern and highlighted areas for further refinement. Despite the challenges, the observed data showed a reasonable agreement with the theoretical beam pattern, demonstrating the capability of the SRT to capture the general characteristics of a radio source's emission. Future experiments, with the suggested modifications, would likely yield results that align even more closely with theoretical expectations.
+
+\bibliographystyle{aasjournal}
+\end{document}
+
