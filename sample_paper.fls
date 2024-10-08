@@ -1,0 +1,6 @@
+PWD /Users/riyakore/Desktop/Astronomy/Astron_465
+INPUT /Users/riyakore/Library/Application Support/MiKTeX/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt
+INPUT /Users/riyakore/Desktop/Astronomy/Astron_465/sample_paper.tex
+OUTPUT sample_paper.log
+INPUT /Users/riyakore/Library/Application Support/MiKTeX/texmfs/install/tex/latex/aastex/aastex631.cls
+INPUT /Users/riyakore/Library/Application Support/MiKTeX/texmfs/install/tex/latex/aastex/aastex631.cls

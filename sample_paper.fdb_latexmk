@@ -1,0 +1,12 @@
+# Fdb version 4
+["pdflatex"] 1727213035 "/Users/riyakore/Desktop/Astronomy/Astron_465/sample_paper.tex" "sample_paper.pdf" "sample_paper" 1727213036 1
+  "/Users/riyakore/Desktop/Astronomy/Astron_465/sample_paper.tex" 1727212688 1877 e54e3a079b808b9f5feccb73bb77109c ""
+  "/Users/riyakore/Library/Application Support/MiKTeX/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1698594261 21027003 e2cb5e14abeb7e04ee149192bce05bb9 ""
+  "/Users/riyakore/Library/Application Support/MiKTeX/texmfs/install/tex/latex/aastex/aastex631.cls" 1727213030 231673 3a8503ea2dc529eec05658a2b11d12d0 ""
+  "sample_paper.aux" 1727213035 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "sample_paper.tex" 1727212688 1877 e54e3a079b808b9f5feccb73bb77109c ""
+  (generated)
+  "sample_paper.aux"
+  "sample_paper.log"
+  "sample_paper.pdf"
+  (rewritten before read)

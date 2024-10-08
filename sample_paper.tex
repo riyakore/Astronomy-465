@@ -1,0 +1,75 @@
+%\documentclass{article}
+%\documentclass[preprint2]{aastex63}
+%\usepackage{graphicx} % Required for inserting images
+
+
+\documentclass[linenumbers,twocolumn]{aastex631}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\setcitestyle{round}
+\usepackage{amsmath,amssymb}
+\usepackage{afterpage}
+\usepackage{xcolor}
+\usepackage[caption=false]{subfig}
+\usepackage{soul}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+\newcommand{\hi}{{\rm H\,{\small I}}}
+\newcommand{\kms}{\ensuremath{{\rm km~s^{-1}}}}
+\newcommand{\persc}{\ensuremath{{\rm cm^{-2}}}}
+\newcommand{\msun}{\ensuremath{M_{\odot}}}
+
+
+
+\begin{document}
+
+\title{WLM}
+
+
+
+\author[0000-0002-3418-7817]{Sne\v zana Stanimirovi\'c}
+\affiliation{University of Wisconsin--Madison, Department of Astronomy, 475 N Charter St, Madison, WI 53703, USA}
+
+
+% \date{June 2023}
+
+
+
+\section{Introduction}
+
+Goals or motivation for this lab.
+
+
+
+\section{Observations} \label{sec:observations}
+\subsection{The local group L-band survey (LGLBS)}
+
+Under Observations please include and explain your observational setup and the observing script. 
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.92\linewidth]{velocity_profile_plot.pdf}
+    \caption{Global Neutral Hydrogen velocity profile.}
+    \label{fig:velocity_profile}
+\end{figure}
+
+
+\section{Data analysis} 
+\label{sec:results}
+
+Under Data Analysis, please include your Az/El scans across the sun, estimates of the FWHM beam width, and your Python code. Provide a summary of the analysis steps you took, explain how you calculated error bars.
+
+
+\section{Conclusions}
+
+Under Conclusions, please explain how your results compare with the theoretical beam shape, comment on any complications/problems during the experiment, and any suggestions on how to improve the experiment in the future.
+
+
+\bibliography{refs}{}
+\bibliographystyle{aasjournal}
+
+
+\end{document}

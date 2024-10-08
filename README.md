@@ -1,2 +1,2 @@
-# Astronomy-465
-Observational Astronomy Lab Course
+# Astron_465
+ Observational Astronomy Lab Course
